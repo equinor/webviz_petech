@@ -16,6 +16,6 @@ test:
 	npm run test
 
 lint:
-	pycodestyle webviz_map examples tests
+	pycodestyle webviz_history_match examples tests
 	npm run lint
 
