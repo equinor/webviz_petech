@@ -4,6 +4,7 @@ import numpy as np
 from webviz import Webviz
 from webviz.page_elements import HistoryMatch
 
+
 def generate_iterations(num_groups, num_iter):
     obs_group_names = ['Obs. group ' + str(i) for i in range(num_groups)]
 
@@ -42,4 +43,3 @@ web.index.add_content(HistoryMatch(iterations=iterations,
                                    iterations_labels=iterations_labels))
 
 web.write_html("./webviz_example", overwrite=True, display=True)
-
