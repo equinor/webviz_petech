@@ -6,7 +6,7 @@ point in time be transferred from this repository to the main
 [webviz repository](https://github.com/Statoil/webviz).
 
 From a user point of view, plugins are imported similarly regardless of it
-being one from the main repository or "pure plugin" repositories like this one.
+being one from the main repository or "pure plugin repositories" like this one.
 After installation, e.g. the history match visualization from this repository
 can be imported as
 ```python
