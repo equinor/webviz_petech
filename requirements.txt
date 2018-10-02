@@ -1,0 +1,6 @@
+jinja2
+Sphinx==1.7.4
+future
+pyyaml
+pandas
+#webviz
