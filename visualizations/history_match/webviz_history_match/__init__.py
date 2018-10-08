@@ -53,6 +53,18 @@ class HistoryMatch(JSONPageElement):
 
         self['data'] = self._prepareData(iterations, iterations_labels)
 
+        self.add_js_file(path.join(
+            path.dirname(__file__),
+            'resources',
+            'js',
+            'history_match.js'))
+
+        self.add_css_file(path.join(
+            path.dirname(__file__),
+            'resources',
+            'css',
+            'slider.css'))
+
     def _prepareData(self, iterations, labels):
         data = {}
 
@@ -97,25 +109,3 @@ class HistoryMatch(JSONPageElement):
         Overrides :meth:`webviz.PageElement.get_template`.
         """
         return env.get_template('history_match.html')
-
-    def get_css_dep(self):
-        """Extends :meth:`webviz.PageElement.get_css_dep`."""
-        deps = super(HistoryMatch, self).get_css_dep()
-        history_match_css = path.join(
-            path.dirname(__file__),
-            'resources',
-            'css',
-            'slider.css')
-        deps.append(history_match_css)
-        return deps
-
-    def get_js_dep(self):
-        """Extends :meth:`webviz.PageElement.get_js_dep`."""
-        deps = super(HistoryMatch, self).get_js_dep()
-        history_match_js = path.join(
-            path.dirname(__file__),
-            'resources',
-            'js',
-            'history_match.js')
-        deps.append(history_match_js)
-        return deps
