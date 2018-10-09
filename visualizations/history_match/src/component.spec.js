@@ -39,4 +39,3 @@ describe('Component', () => {
         expect(spy).to.be.calledWith('event', handler)
     })
 })
-

@@ -4,11 +4,11 @@ const global = window || {}
 
 global.initHistoryMatch = function initHistoryMatch(
     elementSelector,
-    data
+    data,
 ) {
     const height = 800
 
-    let visualization = new HistoryMatching()
+    const visualization = new HistoryMatching()
 
     visualization.init(elementSelector, data)
 }
