@@ -42,6 +42,10 @@ matrix:
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get install pep8 node
+  - pushd ..
+  - export ROOT="$PWD"
+  - git clone https://github.com/Statoil/webviz.git
+  - popd
 
 install:
   - pip install -r requirements.txt
@@ -49,10 +53,10 @@ install:
   - wget https://chromedriver.storage.googleapis.com/2.40/chromedriver_linux64.zip
   - unzip chromedriver_linux64.zip
   - export PATH=$PATH:$PWD
-  - git clone https://github.com/Statoil/webviz.git
-  - cd ./webviz
+  - pushd $ROOT/webviz
+  - git checkout $WEBVIZ_VER
   - make build && make install
-  - cd ..
+  - popd
 
 script:
   - make build
