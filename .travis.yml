@@ -50,13 +50,12 @@ before_install:
 install:
   - pip install -r requirements.txt
   - pip install -r dev-requirements.txt
+  - pushd $ROOT/webviz
+  - make build && make install
+  - popd
   - wget https://chromedriver.storage.googleapis.com/2.40/chromedriver_linux64.zip
   - unzip chromedriver_linux64.zip
   - export PATH=$PATH:$PWD
-  - pushd $ROOT/webviz
-  - git checkout $WEBVIZ_VER
-  - make build && make install
-  - popd
 
 script:
   - make build
