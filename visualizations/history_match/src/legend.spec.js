@@ -1,11 +1,13 @@
-import { Legend } from './legend';
+import Legend from './legend';
 import chai from 'chai';
 import sinonChai from 'sinon-chai';
 chai.use(sinonChai);
-import { expect } from 'chai';
 import sinon from 'sinon';
 import jsdom from 'jsdom-global';
 import * as d3 from 'd3';
+
+const { expect } = chai
+
 
 describe('Legend component', () => {
     beforeEach(() => {
