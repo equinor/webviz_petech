@@ -1,11 +1,13 @@
 import * as d3 from 'd3'
-import { chai, expect } from 'chai'
+import chai from 'chai'
 import sinonChai from 'sinon-chai'
 import sinon from 'sinon'
 import jsdom from 'jsdom-global'
 import HistoryMatchingPlot from './history_matching_plot'
 
 chai.use(sinonChai)
+
+const { expect } = chai
 
 describe('History Matching Plot', () => {
     beforeEach(() => {

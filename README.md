@@ -1,4 +1,4 @@
-# Webviz petroleum technology plugins
+# Webviz petroleum technology plugins [![Build Status](https://travis-ci.com/Statoil/webviz_petech.svg?branch=master)](https://travis-ci.com/Statoil/webviz_petech)
 
 This repository contains [webviz](https://github.com/Statoil/webviz) plugins
 relevant for petroleum technology. Specific plugins might at some later
@@ -37,7 +37,7 @@ some additional requirements:
 
     pip install -r dev-requirements.txt
 
-This involves installing the
+This involves also installing the
 [selenium chrome driver](https://github.com/SeleniumHQ/selenium/wiki/ChromeDriver).
 
 Packages can be installed in-place which speeds up your feedback loop:
