@@ -26,5 +26,5 @@ install: build
 		make install ARGS="$(ARGS)" -C $$project || exit 1;\
 	done
 
-doc:
-	cd docs && make html && cd ..
+#doc:
+#	cd docs && make html && cd ..

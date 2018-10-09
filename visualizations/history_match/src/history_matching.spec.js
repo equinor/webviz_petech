@@ -1,10 +1,12 @@
-import { chai, expect } from 'chai'
+import chai from 'chai'
 import sinonChai from 'sinon-chai'
 import sinon from 'sinon'
 import jsdom from 'jsdom-global'
 import HistoryMatching from './history_matching'
 
 chai.use(sinonChai)
+
+const { expect } = chai
 
 describe('HistoryMatching', () => {
     beforeEach(() => {

@@ -1,4 +1,4 @@
-# Webviz petroleum technology plugins
+# Webviz petroleum technology plugins [![Build Status](https://travis-ci.com/Statoil/webviz_petech.svg?branch=master)](https://travis-ci.com/Statoil/webviz_petech)
 
 This repository contains [webviz](https://github.com/Statoil/webviz) plugins
 relevant for petroleum technology. Specific plugins might at some later

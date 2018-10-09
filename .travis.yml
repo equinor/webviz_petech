@@ -36,5 +36,5 @@ script:
   - make lint
   - make dev-install
   - make test
-  - make doc
+  - #make doc
   - make install
