@@ -37,9 +37,9 @@ def generate_labels(num_iter):
 iterations = generate_iterations(100, 4)
 iterations_labels = generate_labels(4)
 
-web = Webviz('History matching', theme='equinor')
+web = Webviz('History matching')
 
 web.index.add_content(HistoryMatch(iterations=iterations,
                                    iterations_labels=iterations_labels))
 
-web.write_html("./webviz_example", overwrite=True, display=True)
+web.write_html("./webviz_example", overwrite=True)

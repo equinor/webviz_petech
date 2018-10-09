@@ -20,6 +20,48 @@ matrix:
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get install pep8 node
+language : python
+cache: pip
+
+sudo: true
+
+addons:
+    chrome: stable
+
+
+services:
+  - docker
+
+python:
+  - "2.7"
+  - "3.6"
+
+matrix:
+  fast_finish: true
+
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install pep8 node
+ - git clone https://github.com/Statoil/webviz.git
+
+install:
+  - pip install -r requirements.txt
+  - pip install -r dev-requirements.txt
+  - wget https://chromedriver.storage.googleapis.com/2.40/chromedriver_linux64.zip
+  - unzip chromedriver_linux64.zip
+  - export PATH=$PATH:$PWD
+  - pushd $ROOT/webviz
+  - git checkout $WEBVIZ_VER
+  - make build && make install
+  - popd
+
+script:
+  - make build
+  - make lint
+  - make dev-install
+  - make test
+  - make doc
+  - make install
 
 
 install:
