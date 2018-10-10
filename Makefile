@@ -1,5 +1,6 @@
 projects = \
 	visualizations/history_match\
+	visualizations/morris_method\
 
 
 .PHONY: build lint test dev-install install doc

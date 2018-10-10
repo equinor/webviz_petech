@@ -1,3 +1,4 @@
+import os
 import json
 import pandas as pd
 from datetime import datetime
@@ -5,8 +6,9 @@ from datetime import datetime
 from webviz import Webviz
 from webviz.page_elements import MorrisMethod
 
+thisdir = os.path.abspath(os.path.dirname(__file__))
 
-data = json.load(open('./example_data.json'))
+data = json.load(open(os.path.join(thisdir, './example_data.json')))
 config = data['FOPT']
 
 output = pd.DataFrame(
@@ -16,10 +18,10 @@ output = pd.DataFrame(
 
 parameters = config['parameters']
 
-web = Webviz('MorrisMethod', theme='equinor')
+web = Webviz('MorrisMethod')
 
 web.index.add_content(MorrisMethod(output,
                                    parameters,
                                    'Parameter name'))
 
-web.write_html("./webviz_example", overwrite=True, display=True)
+web.write_html("./webviz_example", overwrite=True, display=False)
