@@ -23,7 +23,7 @@ class MorrisMethod(JSONPageElement):
     :param data: ``Pandas.DataFrame``. A dataframe with columns for `min`,
           `mean`, and `max` to show in the plot. The index of the column is
           time. For each parameter there should be two columns with the names
-          `main PARAMETERNAME` and `interactions PARAMETERNAME`, listing the 
+          `main PARAMETERNAME` and `interactions PARAMETERNAME`, listing the
           main an interactions effect respectively for parameter
           `PARAMETERNAME`. There is also a column `name` which is the name
           of the response vector studied.
@@ -35,9 +35,9 @@ class MorrisMethod(JSONPageElement):
         self.data = data.copy()
 
         self.data['time'] = self.data.index.values
-        self.data['time'] = self.data['time']\
-                            .apply(lambda x: datetime.strptime(x, '%Y-%m-%d')\
-                            .isoformat())
+        self.data['time'] = self.data['time'] \
+            .apply(lambda x: datetime.strptime(x, '%Y-%m-%d')
+                   .isoformat())
 
         self['output'] = self.data[['time', 'min', 'max', 'mean']]\
                              .to_dict('records')
@@ -46,7 +46,7 @@ class MorrisMethod(JSONPageElement):
         for column in self.data.columns:
             if 'main ' in column or 'interactions ' in column:
                 param_name = " ".join(column.split(" ")[1:])
-                estimator = column.split()[0] # main or interactions
+                estimator = column.split()[0]  # main or interactions
 
                 param_dict[param_name]['name'] = param_name
                 param_dict[param_name][estimator] = self.data[column].tolist()
@@ -57,7 +57,7 @@ class MorrisMethod(JSONPageElement):
             raise NotImplemented("Not yet support for multiple "
                                  "response vectors")
         self['response_name'] = self.data['name'].unique()[0]
-    
+
         self.add_js_file(path.join(
             path.dirname(__file__),
             'resources',

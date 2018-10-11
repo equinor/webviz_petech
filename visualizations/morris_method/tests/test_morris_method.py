@@ -8,6 +8,7 @@ from selenium.webdriver.chrome.options import Options
 
 from webviz_morris_method import MorrisMethod
 
+
 class TestMorrisMethod(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -43,7 +44,6 @@ class TestMorrisMethod(unittest.TestCase):
         self.assertEqual(self.ret, 0)
 
     def test_depends_on_morris_method(self):
-
 
         mm = MorrisMethod(self.example_df)
 
