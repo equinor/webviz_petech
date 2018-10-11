@@ -2,14 +2,20 @@ import unittest
 import shutil
 import os
 import tempfile
+import pandas as pd
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
+from webviz_morris_method import MorrisMethod
 
 class TestMorrisMethod(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         thisdir = os.path.abspath(os.path.dirname(__file__))
+
+        test_csv = os.path.join(thisdir, '../examples/example.csv')
+        cls.example_df = pd.read_csv(test_csv,
+                                     index_col='index')
 
         cls.tempdir = tempfile.mkdtemp()
         os.chdir(cls.tempdir)
@@ -36,13 +42,14 @@ class TestMorrisMethod(unittest.TestCase):
     def test_return_value(self):
         self.assertEqual(self.ret, 0)
 
-    def test_plotlyjs_moved(self):
-        self.assertTrue(os.path.isfile(os.path.join(
-            self.tempdir,
-            'webviz_example',
-            'resources',
-            'js',
-            'morris_method.js')))
+    def test_depends_on_morris_method(self):
+
+
+        mm = MorrisMethod(self.example_df)
+
+        self.assertTrue(any(
+            (('src', '{root_folder}/resources/js/morris_method.js')
+             in e.attributes) for e in mm.header_elements))
 
 
 if __name__ == '__main__':
