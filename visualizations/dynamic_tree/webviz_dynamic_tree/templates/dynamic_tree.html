@@ -1,0 +1,17 @@
+<div id="grouptree_controls">
+    <div id="{{element.containerId}}iteration_select"></div>
+    <div id="{{element.containerId}}flowrate_select"></div>
+    <div id="{{element.containerId}}grouptree_slider"></div>
+</div>
+
+<div id="{{element.containerId}}grouptree_tree"></div>
+
+<script>
+    initDynamicTree(
+        {'iterations': {{element.get_json_dump('iterations')}},
+         'iteration_names': {{element.get_json_dump('iteration_names')}} },
+        "#{{element.containerId}}grouptree_slider",
+        "#{{element.containerId}}iteration_select",
+        "#{{element.containerId}}flowrate_select",
+        "#{{element.containerId}}grouptree_tree");
+</script>
