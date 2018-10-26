@@ -3,4 +3,5 @@ Sphinx==1.7.4
 future
 scipy
 pandas
+six
 #webviz

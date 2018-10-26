@@ -1,4 +1,5 @@
 import jinja2
+from six import iteritems
 from os import path
 from webviz import JSONPageElement
 from abc import ABCMeta, abstractmethod
@@ -51,10 +52,10 @@ class DynamicTree(JSONPageElement):
                     ],
                 'trees': {
                     date.isoformat(): tree
-                    for date, tree in iteration.iteritems()
+                    for date, tree in iteritems(iteration)
                     }
                 }
-             for name, iteration in iterations.iteritems()
+             for name, iteration in iteritems(iterations)
              }
         )
         if iteration_order is None:
