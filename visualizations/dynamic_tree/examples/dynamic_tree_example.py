@@ -42,4 +42,4 @@ iterations = {n: {datetime(2000 + d, 1, 1): grow_tree(create_node(4, 0), 4, 5)
 
 web.index.add_content(DynamicTree(iterations))
 
-web.write_html("./webviz_example", overwrite=True, display=True)
+web.write_html("./webviz_example", overwrite=True, display=False)
