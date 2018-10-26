@@ -1,7 +1,7 @@
 language : python
 cache: pip
 
-sudo: required
+sudo: true
 
 addons:
     chrome: stable
