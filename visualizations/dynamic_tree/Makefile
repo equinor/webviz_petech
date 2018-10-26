@@ -12,7 +12,7 @@ install: build
 	python setup.py install
 
 test:
-    python ./examples/dynamic_tree_example.py
+	python ./examples/dynamic_tree_example.py
 	py.test --cov=webviz_dynamic_tree --cov-fail-under=90 tests/
 	npm run test
 
