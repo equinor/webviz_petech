@@ -12,7 +12,7 @@ setup(
             'resources/css/*'
         ]},
     test_suite="setup.discover_test_suite",
-    install_requires=['jinja2', 'webviz'],
+    install_requires=['jinja2', 'webviz', 'six'],
     setup_requires=['pytest-runner'],
     tests_require=['pytest', 'mock', 'pycodestyle', 'selenium'],
     entry_points={

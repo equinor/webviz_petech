@@ -9,7 +9,7 @@ from selenium.webdriver.chrome.options import Options
 from webviz_dynamic_tree import DynamicTree
 
 
-class TestMorrisMethod(unittest.TestCase):
+class TestDynamicTree(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         thisdir = os.path.abspath(os.path.dirname(__file__))
@@ -30,7 +30,7 @@ class TestMorrisMethod(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         shutil.rmtree(cls.tempdir)
-        cls.driver.close()
+        cls.driver.quit()
 
     def setUp(self):
         address = 'file://{}/webviz_example/index.html'.format(self.tempdir)
