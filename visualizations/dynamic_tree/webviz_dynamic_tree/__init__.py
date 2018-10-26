@@ -59,7 +59,7 @@ class DynamicTree(JSONPageElement):
              }
         )
         if iteration_order is None:
-            self['iteration_names'] = iterations.keys()
+            self['iteration_names'] = list(iterations.keys())
         else:
             self['iteration_names'] = iteration_order
 
