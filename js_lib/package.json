@@ -1,0 +1,28 @@
+{
+  "name": "webviz_petech",
+  "version": "0.1.0",
+  "description": "",
+  "main": "src/webviz_petech.js",
+  "scripts": {
+    "start": "webpack-dev-server --inline",
+    "build": "npm-run-all --parallel build:js build:css",
+    "build:js": "webpack --display-error-details --config webpack.config.js",
+    "build:css": "atomizer -c \"./visualisations.acss.config.js\" -r \"./visualisations.acss.rules.js\" -n \"#webviz\" -H \"#webviz\" -R \"./src/webportal/visualisations/templates\" | postcss -c -u postcss-color-function -u autoprefixer --no-map -o \"./src/webportal/visualisations/html_resources/css/visualisations.acss.css\"",
+    "test": "webpack --config webpack.testing.config.js && mocha -r jsdom-global/register spec/test.bundle.js",
+  },
+  "author": "Equinor ASA",
+  "license": "LGPLv3",
+  "devDependencies": {
+    "atomizer": "^3.4.7",
+    "autoprefixer": "^8.6.2",
+    "postcss-cli": "^5.0.0",
+    "postcss-color-function": "^4.0.1",
+    "postcss-loader": "^2.1.4",
+    "postcss-nested": "^3.0.0",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.4"
+  },
+  "dependencies": {
+    "d3": "^4.11.0"
+  }
+}
