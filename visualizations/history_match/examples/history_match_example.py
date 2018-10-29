@@ -53,8 +53,6 @@ data = generate_synthetic_data(num_groups=50,
                                num_iter=4,
                                num_realizations=100)
 
-data.to_csv('example.csv')
-
 web = Webviz('History matching')
 
 web.index.add_content(HistoryMatch(data))
