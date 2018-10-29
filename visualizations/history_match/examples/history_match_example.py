@@ -1,45 +1,61 @@
+from collections import OrderedDict
 import pandas as pd
 import numpy as np
 
 from webviz import Webviz
 from webviz.page_elements import HistoryMatch
 
+def generate_synthetic_data(num_groups, num_iter, num_realizations):
+    """Create synthetic test data. In reality, this data will
+    come from  an assisted history matching run.
+    """
 
-def generate_iterations(num_groups, num_iter):
     obs_group_names = ['Obs. group ' + str(i) for i in range(num_groups)]
+    number_dp = np.random.randint(low=10, high=100, size=num_groups)
 
-    data = []
+    df = pd.DataFrame()
+
     for i in range(num_iter):
+        ensemble_name = 'Iteration ' + str(i)
+
         # Random test data following
         # chisquared distribution (i.e. normal distribution squared):
+        misfits = np.random.chisquare(df=1, size=num_groups)
+        misfits *= number_dp
 
-        misfits = np.random.chisquare(df=1, size=(num_groups, 1))
-        split = np.random.rand(num_groups, 1)
+        split = np.random.rand(num_groups)
 
-        pos = misfits*split
-        neg = misfits*(1-split)
+        pos = misfits * split
+        neg = misfits * (1 - split)
 
-        df = pd.DataFrame(np.hstack((pos, neg)),
-                          columns=['pos', 'neg'],
-                          index=obs_group_names)
+        for j in range(num_realizations):
+            realization_name = 'Realization ' + str(j)
 
-        data.append(df)
+            scale = 1.0 + np.random.rand() * 0.4
+            realization_pos = scale * pos
+            realization_neg = scale * neg
 
-    return data
+            df = df.append(pd.DataFrame(
+                OrderedDict([
+                    ('obs_group_name', obs_group_names),
+                    ('ensemble_name', ensemble_name),
+                    ('realization', realization_name),
+                    ('total_pos', realization_pos),
+                    ('total_neg', realization_neg),
+                    ('number_data_points', number_dp)
+                ])))
+
+    return df.set_index(['obs_group_name', 'ensemble_name', 'realization'])
 
 
-def generate_labels(num_iter):
-    obs_group_names = ['Iteration ' + str(i) for i in range(num_iter)]
+data = generate_synthetic_data(num_groups=50,
+                               num_iter=4,
+                               num_realizations=100)
 
-    return obs_group_names
-
-
-iterations = generate_iterations(100, 4)
-iterations_labels = generate_labels(4)
+data.to_csv('example.csv')
 
 web = Webviz('History matching')
 
-web.index.add_content(HistoryMatch(iterations=iterations,
-                                   iterations_labels=iterations_labels))
+web.index.add_content(HistoryMatch(data))
 
-web.write_html("./webviz_example", overwrite=True)
+web.write_html("./webviz_example", overwrite=True, display=False)

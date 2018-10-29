@@ -54,10 +54,10 @@ def _get_sorted_edges(number_observation_groups):
 
 
 class HistoryMatch(JSONPageElement):
-    def __init__(self, iterations, iterations_labels):
+    def __init__(self, data):
         super(HistoryMatch, self).__init__()
 
-        self['data'] = self._prepareData(iterations, iterations_labels)
+        self['data'] = self._prepareData(data)
 
         self.add_js_file(path.join(
             path.dirname(__file__),
@@ -71,17 +71,29 @@ class HistoryMatch(JSONPageElement):
             'css',
             'slider.css'))
 
-    def _prepareData(self, iterations, labels):
-        data = {}
+    def _prepareData(self, data):
+        data = data.copy().reset_index()
+
+        ensemble_labels = data.ensemble_name.unique().tolist()
+        num_obs_groups = len(data.obs_group_name.unique())
+
+        data['avg_pos'] = data['total_pos'] / data['number_data_points']
+        data['avg_neg'] = data['total_neg'] / data['number_data_points']
+
+        iterations = []
+        for ensemble in ensemble_labels:
+            df = data[data.ensemble_name == ensemble]
+            iterations.append(df.groupby('obs_group_name').mean())
 
         sorted_iterations = self._sortIterations(iterations)
 
-        iterations_dict = self._iterations_to_dict(sorted_iterations, labels)
+        iterations_dict = self._iterations_to_dict(sorted_iterations,
+                                                   ensemble_labels)
 
-        num_obs_groups = len(iterations_dict[0]['positive'])
         confidence_sorted = _get_sorted_edges(num_obs_groups)
         confidence_unsorted = _get_unsorted_edges()
 
+        data = {}
         data['iterations'] = iterations_dict
         data['confidence_interval_sorted'] = confidence_sorted
         data['confidence_interval_unsorted'] = confidence_unsorted
@@ -95,7 +107,7 @@ class HistoryMatch(JSONPageElement):
             sorted_df = df.copy()
 
             sorted_data.append(
-                sorted_df.assign(f=sorted_df['pos'] + sorted_df['neg'])
+                sorted_df.assign(f=sorted_df['avg_pos'] + sorted_df['avg_neg'])
                          .sort_values('f', ascending=False)
                          .drop('f', axis=1)
             )
@@ -108,8 +120,8 @@ class HistoryMatch(JSONPageElement):
         for iteration, label in zip(iterations, labels):
             retval.append({
                 'name': label,
-                'positive': iteration['pos'].tolist(),
-                'negative': iteration['neg'].tolist(),
+                'positive': iteration['avg_pos'].tolist(),
+                'negative': iteration['avg_neg'].tolist(),
                 'labels': iteration.index.tolist()
             })
 
