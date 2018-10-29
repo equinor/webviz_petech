@@ -5,6 +5,7 @@ import numpy as np
 from webviz import Webviz
 from webviz.page_elements import HistoryMatch
 
+
 def generate_synthetic_data(num_groups, num_iter, num_realizations):
     """Create synthetic test data. In reality, this data will
     come from  an assisted history matching run.
