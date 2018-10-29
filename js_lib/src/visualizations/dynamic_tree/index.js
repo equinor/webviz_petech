@@ -1,5 +1,5 @@
 import * as d3 from 'd3'
-import Slider from './slider'
+import Slider from '../../components/slider'
 import GroupTree from './group_tree'
 
 /**

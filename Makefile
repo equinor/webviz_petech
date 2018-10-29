@@ -1,4 +1,5 @@
 projects = \
+	js_lib\
 	visualizations/history_match\
 	visualizations/morris_method\
 	visualizations/dynamic_tree\
