@@ -4,7 +4,7 @@ const postcssAutoprefixer = require('autoprefixer');
 const postcssNested = require('postcss-nested');
 
 module.exports =  {
-    entry: ["babel-polyfill", "./src/webviz_petech.js"],
+    entry: ["./src/webviz_petech.js"],
   output: {
     path: path.resolve(__dirname, "./build/"),
     publicPath : "/html_resources/js/",
@@ -26,20 +26,6 @@ module.exports =  {
   },
   module: {
       rules: [
-          {
-              test: /\.js$/,
-              use: [
-                  {
-                      loader: 'babel-loader',
-                      options: {
-                          presets:
-                          [['babel-preset-env',
-                              {"targets": {"browsers": ["since 2013"]}}
-                          ]]
-                      }
-                  },
-              ]
-          },
           {
               test: /\.css$/,
               use: [
