@@ -1,5 +1,6 @@
 projects = \
 	js_lib\
+	visualizations/petech_page_element\
 	visualizations/history_match\
 	visualizations/morris_method\
 	visualizations/dynamic_tree\
