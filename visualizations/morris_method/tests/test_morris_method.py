@@ -6,7 +6,7 @@ import pandas as pd
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
-from webviz_morris_method import MorrisMethod
+from webviz.page_elements import MorrisMethod
 
 
 class TestMorrisMethod(unittest.TestCase):
@@ -43,12 +43,12 @@ class TestMorrisMethod(unittest.TestCase):
     def test_return_value(self):
         self.assertEqual(self.ret, 0)
 
-    def test_depends_on_morris_method(self):
+    def test_depends_on_morris_method_css(self):
 
         mm = MorrisMethod(self.example_df)
 
         self.assertTrue(any(
-            (('src', '{root_folder}/resources/js/morris_method.js')
+            (('href', '{root_folder}/resources/css/morris_method.css')
              in e.attributes) for e in mm.header_elements))
 
 
