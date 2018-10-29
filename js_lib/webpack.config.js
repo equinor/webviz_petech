@@ -68,7 +68,6 @@ module.exports =  {
       ]
   },
   externals: {
-    d3: "d3",
     webviz_petech: "webviz_petech"
   }
 };

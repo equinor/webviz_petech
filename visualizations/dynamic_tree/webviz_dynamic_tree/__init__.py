@@ -1,8 +1,7 @@
 import jinja2
 from six import iteritems
 from os import path
-from webviz import JSONPageElement
-from abc import ABCMeta, abstractmethod
+from webviz.page_elements import PetechPageElement
 
 env = jinja2.Environment(
     loader=jinja2.PackageLoader('webviz_dynamic_tree', 'templates'),
@@ -12,7 +11,7 @@ env = jinja2.Environment(
 )
 
 
-class DynamicTree(JSONPageElement):
+class DynamicTree(PetechPageElement):
     """
     Creates a group tree visualization
 
@@ -62,12 +61,6 @@ class DynamicTree(JSONPageElement):
             self['iteration_names'] = list(iterations.keys())
         else:
             self['iteration_names'] = iteration_order
-
-        self.add_js_file(path.join(
-            path.dirname(__file__),
-            'resources',
-            'js',
-            'dynamic_tree.js'))
 
         self.add_css_file(path.join(
             path.dirname(__file__),

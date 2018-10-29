@@ -12,7 +12,7 @@ install: build
 	python setup.py install
 
 test:
-	py.test --cov=webviz_history_match --cov-fail-under=97 tests/
+	py.test --cov=webviz_petech_page_element --cov-fail-under=94 tests/
 
 lint:
-	pycodestyle webviz_history_match examples tests
+	pycodestyle webviz_petech_page_element examples tests

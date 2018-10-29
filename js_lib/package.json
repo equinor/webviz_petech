@@ -1,7 +1,9 @@
 {
   "name": "webviz_petech",
   "version": "0.1.0",
-  "description": "",
+  "author": "Equinor ASA",
+  "license": "LGPL-3.0-or-later",
+  "description": "Webviz petech visualization JavaScript library",
   "main": "src/webviz_petech.js",
   "scripts": {
     "start": "webpack-dev-server --inline",
@@ -10,8 +12,6 @@
     "build:css": "atomizer -c \"./visualisations.acss.config.js\" -r \"./visualisations.acss.rules.js\" -n \"#webviz\" -H \"#webviz\" -R \"./src/webportal/visualisations/templates\" | postcss -c -u postcss-color-function -u autoprefixer --no-map -o \"./src/webportal/visualisations/html_resources/css/visualisations.acss.css\"",
     "test": "webpack --config webpack.testing.config.js && mocha -r jsdom-global/register spec/test.bundle.js"
   },
-  "author": "Equinor ASA",
-  "license": "LGPLv3",
   "devDependencies": {
     "atomizer": "^3.4.7",
     "autoprefixer": "^8.6.2",
