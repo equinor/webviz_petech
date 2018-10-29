@@ -1,6 +1,7 @@
 from os import path
 from webviz import JSONPageElement
 
+
 class PetechPageElement(JSONPageElement):
     """The base class for a webviz petech page element.
     """
@@ -13,3 +14,9 @@ class PetechPageElement(JSONPageElement):
             'resources',
             'js',
             'webviz_petech.js'))
+
+    def get_template(self):
+        """
+        Overrides :meth:`webviz.PageElement.get_template`.
+        """
+        pass
