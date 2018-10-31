@@ -1,13 +1,6 @@
 import * as d3 from 'd3'
-import Slider from './slider'
+import Slider from '../../components/slider'
 import GroupTree from './group_tree'
-/* eslint camelcase: "off" */
-/* eslint no-inner-declarations: "off" */
-/* eslint no-shadow: "off" */
-/* eslint prefer-destructuring: "off" */
-/* eslint no-use-before-define: "off" */
-/* Fix this lint when rewriting the whole file */
-
 
 /**
  * Creates a new instance of the group tree visualization with the necessary control components.
@@ -35,9 +28,7 @@ import GroupTree from './group_tree'
  * @param gtDomId -- DOM id for the group tree svg element.
  */
 
-const global = window || {}
-
-global.initDynamicTree = function initDynamicTree(
+export function initDynamicTree(
     data,
     sliderDomId,
     iterationDomId,

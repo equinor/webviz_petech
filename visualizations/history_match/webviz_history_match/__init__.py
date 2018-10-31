@@ -1,7 +1,6 @@
 import jinja2
 from os import path
-from webviz import JSONPageElement
-from abc import ABCMeta, abstractmethod
+from webviz.page_elements import PetechPageElement
 import numpy as np
 from scipy.stats import chi2
 
@@ -53,17 +52,11 @@ def _get_sorted_edges(number_observation_groups):
     return coordinates
 
 
-class HistoryMatch(JSONPageElement):
+class HistoryMatch(PetechPageElement):
     def __init__(self, data):
         super(HistoryMatch, self).__init__()
 
         self['data'] = self._prepareData(data)
-
-        self.add_js_file(path.join(
-            path.dirname(__file__),
-            'resources',
-            'js',
-            'history_match.js'))
 
         self.add_css_file(path.join(
             path.dirname(__file__),

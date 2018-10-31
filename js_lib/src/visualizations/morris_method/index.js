@@ -1,9 +1,7 @@
 import * as d3 from 'd3'
 import sensitivitySliderPlot from './sensitivity_slider_plot'
 
-const global = window || {}
-
-global.initMorrisMethod = function initMorrisMethod(
+export function initMorrisMethod(
     elementSelector,
     output,
     parameters,

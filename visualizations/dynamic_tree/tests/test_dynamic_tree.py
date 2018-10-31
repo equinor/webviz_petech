@@ -6,7 +6,7 @@ import pandas as pd
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
-from webviz_dynamic_tree import DynamicTree
+from webviz.page_elements import DynamicTree
 
 
 class TestDynamicTree(unittest.TestCase):
@@ -39,12 +39,12 @@ class TestDynamicTree(unittest.TestCase):
     def test_return_value(self):
         self.assertEqual(self.ret, 0)
 
-    def test_depends_on_morris_method(self):
+    def test_depends_on_dynamic_tree_css(self):
 
         dt = DynamicTree({})
 
         self.assertTrue(any(
-            (('src', '{root_folder}/resources/js/dynamic_tree.js')
+            (('href', '{root_folder}/resources/css/dynamic_tree.css')
              in e.attributes) for e in dt.header_elements))
 
 

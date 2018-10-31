@@ -1,5 +1,5 @@
 import * as d3 from 'd3'
-import Component from './component'
+import Component from '../../components/component'
 
 export default class Legend {
     constructor(config = {}) {

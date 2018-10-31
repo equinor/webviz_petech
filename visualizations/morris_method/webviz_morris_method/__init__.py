@@ -1,7 +1,6 @@
 import jinja2
 from os import path
-from webviz import JSONPageElement
-from abc import ABCMeta, abstractmethod
+from webviz.page_elements import PetechPageElement
 from datetime import datetime
 from collections import defaultdict
 
@@ -13,7 +12,7 @@ env = jinja2.Environment(
 )
 
 
-class MorrisMethod(JSONPageElement):
+class MorrisMethod(PetechPageElement):
     """
     An interactive display of main and interaction effects on sets of
     parameters when scanning through the span of a plot. The plot contains a
@@ -57,12 +56,6 @@ class MorrisMethod(JSONPageElement):
             raise NotImplemented("Not yet support for multiple "
                                  "response vectors")
         self['response_name'] = self.data['name'].unique()[0]
-
-        self.add_js_file(path.join(
-            path.dirname(__file__),
-            'resources',
-            'js',
-            'morris_method.js'))
 
         self.add_css_file(path.join(
             path.dirname(__file__),

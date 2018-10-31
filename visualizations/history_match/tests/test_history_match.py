@@ -1,7 +1,7 @@
 import unittest
 import pandas as pd
 
-from webviz_history_match import HistoryMatch
+from webviz.page_elements import HistoryMatch
 
 
 class TestHistoryMatch(unittest.TestCase):
@@ -11,7 +11,7 @@ class TestHistoryMatch(unittest.TestCase):
     def test_csv_equal_to_df(self):
         pass
 
-    def test_depends_on_history_match_js(self):
+    def test_initialization(self):
         hm = HistoryMatch(pd.DataFrame({'obs_group_name': 42,
                                         'ensemble_name': 42,
                                         'realization': 42,
@@ -21,7 +21,7 @@ class TestHistoryMatch(unittest.TestCase):
                                        index=[0]))
 
         self.assertTrue(any(
-            (('src', '{root_folder}/resources/js/history_match.js')
+            (('href', '{root_folder}/resources/css/slider.css')
              in e.attributes) for e in hm.header_elements))
 
 

@@ -1,8 +1,6 @@
 import HistoryMatching from './history_matching'
 
-const global = window || {}
-
-global.initHistoryMatch = function initHistoryMatch(
+export function initHistoryMatch(
     elementSelector,
     data,
 ) {

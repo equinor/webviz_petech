@@ -1,6 +1,6 @@
 import * as d3 from 'd3'
 import HistoryMatchingPlot from './history_matching_plot'
-import Slider from './slider'
+import Slider from '../../components/slider'
 
 export default class HistoryMatching {
     init(container, data) {
