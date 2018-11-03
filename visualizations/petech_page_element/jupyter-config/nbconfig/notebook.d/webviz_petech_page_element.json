@@ -1,0 +1,5 @@
+{
+  "load_extensions": {
+    "webviz_petech_page_element/webviz_petech": true
+  }
+}
