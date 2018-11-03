@@ -20,3 +20,34 @@ class PetechPageElement(JSONPageElement):
         Overrides :meth:`webviz.PageElement.get_template`.
         """
         pass
+
+    def _repr_html_(self):
+        html = """<style>.slider,
+.slider-inset,
+.slider-overlay {
+    stroke-linecap: round;
+}
+
+.slider {
+    stroke-width: 8px;
+}
+
+.slider-inset {
+    stroke: #b20276;
+    stroke-width: 8px;
+}
+
+.slider-overlay {
+    pointer-events: stroke;
+    cursor: pointer;
+}
+
+.handle {
+    fill: #fff;
+    stroke: #b20276;
+    stroke-opacity: 0.5;
+    stroke-width: 1.25px;
+}</style>
+"""
+
+        return html + self.get_template().render(element=self, root_folder='.')
