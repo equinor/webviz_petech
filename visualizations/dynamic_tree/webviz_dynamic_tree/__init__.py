@@ -62,18 +62,6 @@ class DynamicTree(PetechPageElement):
         else:
             self['iteration_names'] = iteration_order
 
-        self.add_css_file(path.join(
-            path.dirname(__file__),
-            'resources',
-            'css',
-            'dynamic_tree.css'))
-
-        self.add_css_file(path.join(
-            path.dirname(__file__),
-            'resources',
-            'css',
-            'slider.css'))
-
     def get_template(self):
         """
         Overrides :meth:`webviz.PageElement.get_template`.

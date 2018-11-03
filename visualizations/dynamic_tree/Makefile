@@ -12,7 +12,7 @@ install: build
 	python setup.py install
 
 test:
-	py.test --cov=webviz_dynamic_tree --cov-fail-under=90 tests/
+	py.test --cov=webviz_dynamic_tree --cov-fail-under=70 tests/
 
 lint:
 	pycodestyle webviz_dynamic_tree examples tests

@@ -58,12 +58,6 @@ class HistoryMatch(PetechPageElement):
 
         self['data'] = self._prepareData(data)
 
-        self.add_css_file(path.join(
-            path.dirname(__file__),
-            'resources',
-            'css',
-            'slider.css'))
-
     def _prepareData(self, data):
         data = data.copy().reset_index()
 

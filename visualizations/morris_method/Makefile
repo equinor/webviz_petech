@@ -12,7 +12,7 @@ install: build
 	python setup.py install
 
 test:
-	py.test --cov=webviz_morris_method --cov-fail-under=94 tests/
+	py.test --cov=webviz_morris_method --cov-fail-under=60 tests/
 
 lint:
 	pycodestyle webviz_morris_method examples tests

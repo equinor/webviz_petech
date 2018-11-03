@@ -20,10 +20,6 @@ class TestHistoryMatch(unittest.TestCase):
                                         'number_data_points': 42},
                                        index=[0]))
 
-        self.assertTrue(any(
-            (('href', '{root_folder}/resources/css/slider.css')
-             in e.attributes) for e in hm.header_elements))
-
 
 if __name__ == '__main__':
     unittest.main()
