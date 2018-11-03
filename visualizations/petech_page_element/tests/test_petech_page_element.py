@@ -16,5 +16,6 @@ class TestPetechPageElement(unittest.TestCase):
              in e.attributes)
             for e in ppe.header_elements))
 
+
 if __name__ == '__main__':
     unittest.main()

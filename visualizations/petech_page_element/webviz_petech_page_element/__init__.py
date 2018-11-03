@@ -20,6 +20,7 @@ class PetechPageElement(JSONPageElement):
             'resources',
             'css',
             'webviz_petech.css'))
+
     def get_template(self):
         """
         Overrides :meth:`webviz.PageElement.get_template`.
