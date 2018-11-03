@@ -22,4 +22,11 @@ class PetechPageElement(JSONPageElement):
         pass
 
     def _repr_html_(self):
-        return self.get_template().render(element=self, root_folder='.')
+        html = ""
+
+        for elem in self.header_elements:
+            if not any(key in ["href", "src"] for key, _ in elem.attributes):
+                html += str(elem)
+                html += "\n"
+
+        return html + self.get_template().render(element=self, root_folder='.')
