@@ -1,10 +1,8 @@
 const path = require("path");
 const webpack = require("webpack");
-const postcssAutoprefixer = require('autoprefixer');
-const postcssNested = require('postcss-nested');
 
 module.exports =  {
-    entry: ["./src/webviz_petech.js"],
+  entry: ["./src/webviz_petech.js"],
   output: {
     path: path.resolve(__dirname, "./build/"),
     publicPath : "/html_resources/js/",
@@ -25,33 +23,12 @@ module.exports =  {
     ]
   },
   module: {
-      rules: [
-          {
-              test: /\.css$/,
-              use: [
-                  {
-                      loader: 'css-loader',
-                      options: {
-                          importLoaders: 1,
-                      },
-                  },
-                  {
-                      loader: 'postcss-loader',
-                      options: {
-                          plugins: [
-                              postcssNested(),
-                              postcssAutoprefixer({
-                                  browsers: [
-                                      'last 2 versions',
-                                      'not ie < 12'
-                                  ]
-                              }),
-                          ],
-                      },
-                  }
-              ]
-          },
-      ]
+    rules:[
+            {
+                test:/\.css$/,
+                use:['style-loader','css-loader']
+            }
+          ]
   },
   externals: {
     webviz_petech: "webviz_petech"
