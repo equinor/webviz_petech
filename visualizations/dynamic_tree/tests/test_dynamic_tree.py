@@ -39,14 +39,6 @@ class TestDynamicTree(unittest.TestCase):
     def test_return_value(self):
         self.assertEqual(self.ret, 0)
 
-    def test_depends_on_dynamic_tree_css(self):
-
-        dt = DynamicTree({})
-
-        self.assertTrue(any(
-            (('href', '{root_folder}/resources/css/dynamic_tree.css')
-             in e.attributes) for e in dt.header_elements))
-
 
 if __name__ == '__main__':
     unittest.main()

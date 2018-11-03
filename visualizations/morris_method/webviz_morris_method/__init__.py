@@ -57,12 +57,6 @@ class MorrisMethod(PetechPageElement):
                                  "response vectors")
         self['response_name'] = self.data['name'].unique()[0]
 
-        self.add_css_file(path.join(
-            path.dirname(__file__),
-            'resources',
-            'css',
-            'morris_method.css'))
-
     def get_template(self):
         """
         Overrides :meth:`webviz.PageElement.get_template`.

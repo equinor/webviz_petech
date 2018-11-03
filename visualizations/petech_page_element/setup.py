@@ -7,7 +7,8 @@ setup(
     package_dir={"": "."},
     package_data={
         'webviz_petech_page_element': [
-            'resources/js/*'
+            'resources/js/*',
+            'resources/css/*'
         ]},
     test_suite="setup.discover_test_suite",
     install_requires=['webviz'],

@@ -5,11 +5,7 @@ setup(
     version='0.1.0',
     packages=find_packages("."),
     package_dir={"": "."},
-    package_data={
-        'webviz_history_match': [
-            'templates/*',
-            'resources/css/*'
-        ]},
+    package_data={'webviz_history_match': ['templates/*']},
     test_suite="setup.discover_test_suite",
     install_requires=['jinja2', 'webviz', 'numpy', 'scipy'],
     setup_requires=['pytest-runner'],
