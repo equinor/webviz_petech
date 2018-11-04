@@ -11,15 +11,18 @@ export default class HistoryMatching {
         this.initIterationPicker()
         this.initPlot()
         this._reorderTooltipLegendElements()
+        this.initResize()
     }
 
     initVisualisation() {
         this.margin = {
-            left: 200, right: 100, bottom: 100, top: 100,
+            left: 200, right: 200, bottom: 100, top: 100,
         }
 
-        this.plotWidth = 1200 - this.margin.left - this.margin.right // width of plot area
+        this.plotWidth = d3.select(this.container).node().offsetWidth - this.margin.left - this.margin.right // width of plot area
         this.plotHeight = 20 * (this.data.iterations[0].labels.length + 1) // height of plot area
+
+        d3.select(this.container).selectAll('*').remove()
 
         this.svg = d3.select(this.container).append('svg')
             .attr('width', this.plotWidth + this.margin.left + this.margin.right)
@@ -66,6 +69,18 @@ export default class HistoryMatching {
         })
 
         this.iterationPicker.render()
+    }
+
+    initResize() {
+        const resize = () => {
+            this.plotWidth = d3.select(this.container).node().offsetWidth - this.margin.left - this.margin.right // width of plot area
+            this.initVisualisation()
+            this.initIterationPicker()
+            this.initPlot()
+            this._reorderTooltipLegendElements()
+        }
+
+        window.addEventListener('resize', resize)
     }
 
     _setIteration(index) {
