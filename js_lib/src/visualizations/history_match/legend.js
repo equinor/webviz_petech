@@ -35,16 +35,6 @@ export default class Legend {
         this.container = this.parentElement.append('g')
             .attr('id', 'g_legend')
             .attr('transform', `translate(${this.position.x},${this.position.y})`)
-
-        this.container
-            .append('rect')
-            .attr('width', this.width)
-            .attr('height', this.height)
-            .attr('x', 0)
-            .attr('y', 0)
-            .attr('fill', 'white')
-            .attr('fill-opacity', 0.9)
-            .attr('stroke', 'black')
     }
 
     renderLegend() {

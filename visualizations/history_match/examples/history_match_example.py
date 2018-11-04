@@ -53,7 +53,7 @@ data = generate_synthetic_data(num_groups=50,
                                num_iter=4,
                                num_realizations=100)
 
-web = Webviz('History matching')
+web = Webviz('History matching', theme='equinor')
 
 web.index.add_content(HistoryMatch(data))
 
