@@ -1,9 +1,9 @@
-# Webviz petroleum technology plugins [![Build Status](https://travis-ci.com/Statoil/webviz_petech.svg?branch=master)](https://travis-ci.com/Statoil/webviz_petech)
+# Webviz petroleum technology plugins [![Build Status](https://travis-ci.com/equinor/webviz_petech.svg?branch=master)](https://travis-ci.com/equinor/webviz_petech)
 
-This repository contains [webviz](https://github.com/Statoil/webviz) plugins
+This repository contains [webviz](https://github.com/equinor/webviz) plugins
 relevant for petroleum technology. Specific plugins might at some later
 point in time be transferred from this repository to the main
-[webviz repository](https://github.com/Statoil/webviz).
+[webviz repository](https://github.com/equinor/webviz).
 
 From a user point of view, plugins are imported similarly regardless of it
 being one from the main repository or "pure plugin repositories" like this one.
@@ -23,7 +23,7 @@ python dependencies can be installed with
 
     pip install -r requirements.txt
 
-In addition, you will need to have [webviz](https://github.com/Statoil/webviz)
+In addition, you will need to have [webviz](https://github.com/equinor/webviz)
 itself installed.
 
 After dependencies are installed you can do
