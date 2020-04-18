@@ -1,7 +1,7 @@
 language : python
-cache: pip
+dist: bionic
 
-sudo: true
+sudo: required
 
 addons:
     chrome: stable
